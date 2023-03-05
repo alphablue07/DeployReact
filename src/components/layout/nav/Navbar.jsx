@@ -103,7 +103,7 @@ const Navbar = ({ bgColor, user, transparant = false }) => {
             ) : (
               <ul className="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                 <li className="nav-item">
-                  <a className="nav-link" href="/" onClick={toggleModal}>
+                  <a className="nav-link" href="#loginModal" onClick={toggleModal}>
                     LOGIN
                   </a>
                 </li>

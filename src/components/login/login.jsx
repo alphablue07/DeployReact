@@ -56,6 +56,7 @@ class Login extends Component {
   render() {
     return (
       <Modal
+        id="loginModal"
         show={this.props.showModal}
         onHide={this.props.toggleFunc}
         size="lg"
