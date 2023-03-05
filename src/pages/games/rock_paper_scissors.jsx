@@ -1,7 +1,4 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
+import { Component, useState, useEffect } from "react";
 import Navbar from "../../components/layout/nav/Navbar";
 import img_hand_batu from "../../assets/images/games/rock-paper-scissors/hand_batu.png"
 import img_hand_kertas from "../../assets/images/games/rock-paper-scissors/hand_kertas.png"
@@ -9,11 +6,17 @@ import img_hand_gunting from "../../assets/images/games/rock-paper-scissors/hand
 import img_icon_refresh from "../../assets/images/games/rock-paper-scissors/icon_refresh.png"
 import "../../assets/pages/games/rock_paper_scissors/style.css"
 import { halamanGameVerifikasi, insertGameScore } from "../../action/games";
-// import { checkDataLogin } from "../../action/autentication";
+import { checkDataLogin } from "../../action/autentication";
 
 const GameRPS = () => {
+    // const [gameRound, setGameRound] = useState(1);
+    // const [gameScore, setGameScore] = useState(0);
     const game_id = "-NG-Fxccy-8f1RZoup6D"
     const uuid = localStorage.getItem('UID');
+
+    let gameRound = 1;
+    let gameScore = 0;
+    let maxRound = 5;
 
     let color_chose = '#C4C4C4';
     let color_unchose = '#00000000';
@@ -22,6 +25,9 @@ const GameRPS = () => {
     let text_vs = null;
     let winner = null;
     let winner_text = null;
+    let text_round = null;
+    let text_score = null;
+    let btn_reset = null;
 
     let result_text = ["DRAW", "PLAYER 1<br>WIN", "COM<br>WIN"];
     let hand_p = [];
@@ -35,10 +41,23 @@ const GameRPS = () => {
         card_hand(0, "player");
         winner.style.display = "none";
         text_vs.style.display = "block";
+
+        if(gameRound>maxRound){
+            insertGameScore(game_id, uuid, gameScore);
+            gameRound = 1
+            gameScore = 0
+
+        }
+        text_round.innerHTML = gameRound
+        text_score.innerHTML = gameScore
+
+        
+        btn_reset.style.display = 'none'
     }
 
     function card_hand(handChose, who) {
         for (let i = 1; i <= 3; i++) {
+            console.log("WHO", who, hand)
             hand[who][i].style.backgroundColor = color_unchose;
         }
 
@@ -64,7 +83,7 @@ const GameRPS = () => {
         card_hand(com_chose, "com");
         card_hand(you_chose, "player");
 
-        if (res !== 0) {
+        if (res != 0) {
             if (res < 2 && res > -2) {
                 if (you_chose > com_chose) {
                     who_won = 1;
@@ -85,13 +104,29 @@ const GameRPS = () => {
         text_vs.style.display = "none";
 
         if (who_won === 1) {
-            insertGameScore(game_id, uuid, 2);
+            gameScore+=3
+            // setScore(2)
+            // insertGameScore(game_id, uuid, 2);
         } else if (who_won === 2) {
-            insertGameScore(game_id, uuid, -1);
+            gameScore-=1
+            // insertGameScore(game_id, uuid, -1);
         } else {
-            insertGameScore(game_id, uuid, 0);
+            // setScore(score+0)
+            // insertGameScore(game_id, uuid, 0);
         }
+        gameRound++;
+        text_score.innerHTML = gameScore
+
+        if(gameRound<maxRound+1){
+            setTimeout(function() { //Start the timer
+                reset();
+            }.bind(this), 1000)
+        }else{
+            btn_reset.style.display = 'block'
+        }
+        
     }
+
 
 
     useEffect( () => {
@@ -108,6 +143,10 @@ const GameRPS = () => {
         winner = document.getElementById('winner');
         winner_text = document.getElementById('winner_text');
 
+        text_round = document.getElementById('text_round');
+        text_score = document.getElementById('text_score');
+        btn_reset = document.getElementById('btn_reset');
+
         hand_p = [null, hand_p_1, hand_p_2, hand_p_3];
         hand_com = [null, hand_com_1, hand_com_2, hand_com_3];
 
@@ -121,10 +160,30 @@ const GameRPS = () => {
 
 
     return (
-        <div style={{ backgroundColor: "#9C835F" }}>
+        <div className="mt-5" style={{ backgroundColor: "#9C835F" }}>
             <Navbar bgColor="#4A4A5C" />
 
+
             <div className="container">
+                <div className="position-absolute " style={{ marginTop: 50, fontSize: 20, fontWeight: 800 }}>
+                    <table>
+                        <tr>
+                            <td>ROUND</td>
+                            <td> </td>
+                            <td> : </td>
+                            <td> </td>
+                            <td ><span id='text_round'>1</span> / {maxRound}</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>SCORE</td>
+                            <td> </td>
+                            <td> : </td>
+                            <td> </td>
+                            <td id='text_score'>0</td>
+                        </tr>
+                    </table>
+                </div>
                 <div className="row text-center align-items-center justify-content-center" style={{ height: "100vh" }}>
                     <div className="col-3 ">
                         <div className="row ">
@@ -162,17 +221,25 @@ const GameRPS = () => {
 
                     </div>
                     <div className="col-3 container-hand-items justify-content">
-                        <h1 id='text_vs' className="text-vs"><strong>VS</strong></h1>
-                        <div id='winner'>
-                            <div className="card-result d-flex">
-                                <div className="d-flex  justify-content-center">
-                                    <h4 id='winner_text' className="align-middle ">WHO WIN?</h4>
+                                
+                        <div className="row">
+                            <div className="col">
+                                
+                            </div>
+                            <div className="col">
+                                <h1 id='text_vs' className="text-vs"><strong>VS</strong></h1>
+                                <div id='winner'>
+                                    <div className="card-result d-flex">
+                                        <div className="d-flex  justify-content-center">
+                                            <h4 id='winner_text' className="align-middle ">WHO WIN?</h4>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <div className="position-absolute bottom-0 start-5 translate-middle-y">
-                            <a href="#" onClick={() => { reset() }} className="">
+                            <a href="#" id="btn_reset" onClick={() => { reset() }} className="">
                                 <div className="card-reset d-flex">
                                     <img src={img_icon_refresh} className="img-reset" />
                                 </div>
