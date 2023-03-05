@@ -1,0 +1,7 @@
+&.disable{
+    background: gray;
+    border: 1px solid gray;
+    &:hover{
+        cursor: not-allowed;
+    }
+}
