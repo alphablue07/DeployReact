@@ -37,10 +37,13 @@ export default function UpdateProfile(){
         // console.log("Data User", dataUser)
         setProfile(dataUser)
       } 
-      
+
+      const setDataUserDetail = (dataUser) =>{
+        // console.log("data user detail:", dataUser)
+    }    
 
       useEffect(() => {
-          checkDataLogin( setDataUser, setProfile)
+          checkDataLogin( setDataUserDetail, setDataUser, setProfile)
       }, []);      
     return (
       <div style={{ backgroundColor: "#2B2D33", color: "#fff" }}>
@@ -70,7 +73,7 @@ export default function UpdateProfile(){
                   <Form.Label>Social Media</Form.Label>
                   <Form.Control type="plaintext" onChange={(e) => setSocialmedia(e.target.value)} placeholder={profile?.social_media} name="social_media"></Form.Control>
                 </Form.Group>
-                <Button type="submit" className="btn btn-primary me-3" >
+                <Button type="submit" href="/profiles" className="btn btn-primary me-3" >
                   Update
                 </Button>
               </Form>
