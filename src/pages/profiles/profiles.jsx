@@ -22,10 +22,28 @@ const Profiles = (props) => {
       const currentUser = useAuth();
       const [photo, setPhoto] = useState(null);
       const [photoURL, setphotoURL] = useState("https://spesialis1.orthopaedi.fk.unair.ac.id/wp-content/uploads/2021/02/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg");
+      const [imageSrc, setImageSrc] = useState();
 
-      function handleChange(e) {
-        if (e.target.files[0]) {
-          setPhoto(e.target.files[0])
+      // function handleChange(e) {
+      //   if (e.target.files[0]) {
+      //     setPhoto(e.target.files[0])
+      //   }
+      // }
+
+      function handleOnChange(changeEvent) {
+        const reader = new FileReader();
+    
+        reader.onload = function(onLoadEvent) {
+          document.getElementById('preview').innerHTML = 'Preview'
+          document.getElementById('preview').style.color = 'red'
+          document.getElementById('preview').style.textAlign = 'left'
+          document.getElementById('preview').style.lineHeight = '10px'
+          setImageSrc(onLoadEvent.target.result);
+        }
+        
+        if(changeEvent.target.files[0]){
+          reader.readAsDataURL(changeEvent.target.files[0]);
+          setPhoto(changeEvent.target.files[0])
         }
       }
 
@@ -100,10 +118,13 @@ const Profiles = (props) => {
             <div className="row">
               <div className="col-3">
               <Card className="bg-dark" style={{ width: '100%' }}>
+                <Card.Header style={{backgroundImage: `url(${photoURL})`, width: "100%", height: "200px", backgroundRepeat: "no-repeat", backgroundSize: "cover"}}/>
+                <Card.Header id='preview' style={{backgroundImage: `url(${imageSrc})`, width: "100%", height: "200px", backgroundRepeat: "no-repeat", backgroundSize: "cover", textAlign:'center', lineHeight:'200px', fontWeight:'bold'}}> Image Preview Shown Here </Card.Header>
+
                 <Card.Img variant="top" src={photoURL}/> 
                 <Card.Body style={{position: "relative"}}>
                 <div style={{position: "absolute", top:"1px", left:"0" , right:"0", backgroundColor:"rgba(255,255,255,0.8)"}}>
-                  <Form.Control onChange={handleChange} type="file" size="sm" />
+                  <Form.Control onChange={handleOnChange} type="file" size="sm" />
                 </div>
                 </Card.Body>
               </Card>

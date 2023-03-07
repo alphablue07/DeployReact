@@ -11,6 +11,7 @@ import Home from "./pages/home";
 import Profiles from "./pages/profiles/profiles";
 import Register from "./pages/register/register";
 import ProfileUpdate from "./pages/updateProfiles/updateProfiles";
+import View from "./pages/pdfView/pdfview";
 import { Provider } from "react-redux";
 import { store } from './config/redux'
 // function App() {
@@ -68,6 +69,7 @@ function App() {
         <Route path="/profiles" element={<Profiles />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profiles/update" element={<ProfileUpdate />} />
+        <Route path="/game/rps/history" element={<View />} />
         
 
       </Routes>
