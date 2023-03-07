@@ -15,6 +15,7 @@ import { halamanGameVerifikasi } from "../../action/games";
 import { getLeaderBoard } from "../../action/games";
 // import { useAuth,upload } from "../../config/firebase";
 import { useAuth,upload } from "../../action/fb_storage";
+import { VideoUploader } from "../../components"
 
 const Profiles = (props) => {
       halamanGameVerifikasi();
@@ -126,7 +127,7 @@ const Profiles = (props) => {
                 </div>
                 </Card.Body>
               </Card>
-              <Button className="mt-1" type="submit" onClick={handleClick}>Save Changes</Button>     
+              <Button className="mt-1" type="submit" href="/profiles" onClick={handleClick}>Save Changes</Button>     
               </div>
               <div className="col-lg-5 offset-1">
                   <Form.Group className="mb-3" controlId="name">
@@ -176,6 +177,11 @@ const Profiles = (props) => {
               </div>
             </div>
           </Container>
+
+          <Container>
+            <VideoUploader/>
+          </Container>
+
         </div>
       );
 }  
