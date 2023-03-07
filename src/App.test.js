@@ -1,8 +1,16 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render } from '@testing-library/react';
+import { Home } from "./pages/home"
+import { BrowserRouter } from 'react-router-dom';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+describe("test all pages render", () => { 
+  test("renders Home pages", async () => {
+    render(
+      <BrowserRouter>
+        <Home/>
+      </BrowserRouter>,
+    )
+  })
+
+})
+
+
