@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
-import { onAuthStateChanged, updateProfile } from "firebase/auth";
-import { getDownloadURL, ref, deleteObject } from "firebase/storage"
-import { authFirebase,storage } from "../config/firebase";
+import { getAuth, onAuthStateChanged, updateProfile } from "firebase/auth";
+import { getDownloadURL, uploadBytes, ref, deleteObject } from "firebase/storage"
+import { getStorage } from 'firebase/storage'
+import { updateProfileImg } from "./fb_database";
 
-// const auth = getAuth();
+const auth = getAuth();
+const storage = getStorage();
 
 // initialize
 
@@ -19,7 +21,7 @@ export function useAuth(){
   const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
-    const unsub = onAuthStateChanged(authFirebase, user => setCurrentUser(user));
+    const unsub = onAuthStateChanged(auth, user => setCurrentUser(user));
     return unsub;
   }, [])
   return currentUser
@@ -33,9 +35,10 @@ export async function deletePhoto(currentUser){
 
 export async function upload(file,currentUser){
       const fileRef = ref(storage, currentUser.uid + '.png');
-      // const snapshot = await uploadBytes(fileRef,file);
+      // eslint-disable-next-line no-unused-vars
+      const snapshot = await uploadBytes(fileRef,file);
       const photoURL = await getDownloadURL(fileRef);
+      updateProfileImg(currentUser,photoURL)
       updateProfile(currentUser, {photoURL});
       alert('photo profile updated!')
-      
 }

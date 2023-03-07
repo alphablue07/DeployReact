@@ -14,7 +14,7 @@ import Form from 'react-bootstrap/Form';
 
 
 import logo from '../../assets/images/echamp.png';
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 
 
 
@@ -110,8 +110,10 @@ class Login extends Component {
   }
 }
 
-const reduxState = (state) => ({
-  userName: state.user
-})
+// const reduxState = (state) => ({
+//   userName: state.user
+// })
 
-export default connect(reduxState, null)(Login)
+// export default connect(reduxState, null)(Login)
+
+export default Login

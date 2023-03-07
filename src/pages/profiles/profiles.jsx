@@ -120,8 +120,6 @@ const Profiles = (props) => {
               <Card className="bg-dark" style={{ width: '100%' }}>
                 <Card.Header style={{backgroundImage: `url(${photoURL})`, width: "100%", height: "200px", backgroundRepeat: "no-repeat", backgroundSize: "cover"}}/>
                 <Card.Header id='preview' style={{backgroundImage: `url(${imageSrc})`, width: "100%", height: "200px", backgroundRepeat: "no-repeat", backgroundSize: "cover", textAlign:'center', lineHeight:'200px', fontWeight:'bold'}}> Image Preview Shown Here </Card.Header>
-
-                <Card.Img variant="top" src={photoURL}/> 
                 <Card.Body style={{position: "relative"}}>
                 <div style={{position: "absolute", top:"1px", left:"0" , right:"0", backgroundColor:"rgba(255,255,255,0.8)"}}>
                   <Form.Control onChange={handleOnChange} type="file" size="sm" />

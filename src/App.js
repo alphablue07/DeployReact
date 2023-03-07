@@ -12,8 +12,7 @@ import Profiles from "./pages/profiles/profiles";
 import Register from "./pages/register/register";
 import ProfileUpdate from "./pages/updateProfiles/updateProfiles";
 import View from "./pages/pdfView/pdfview";
-import { Provider } from "react-redux";
-import { store } from './config/redux'
+
 // function App() {
 //   return (
 //     <div className="App">
@@ -60,7 +59,7 @@ function App() {
   }, []);
 
   return (
-    <Provider store={store}>
+
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -74,7 +73,7 @@ function App() {
 
       </Routes>
     </Router>
-    </Provider>
+
   );
 }
 
