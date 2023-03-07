@@ -55,7 +55,7 @@ const PDF = () => {
                 <View style={{display: 'flex', justifyContent: "center", flexDirection: "column"}}>
                         <Text style={{alignSelf: 'center', paddingBottom:'20px'}}>Account : {currentUser?.email}</Text>
                         <Text style={{paddingLeft: '30px', paddingBottom: '20px'}}>ID_Player : {playId}</Text>
-                        <Text wrap={false} style={{alignSelf: "flex-start", paddingLeft: '30px'}}>
+                        <Text wrap={true} style={{alignSelf: "flex-start", paddingLeft: '30px'}}>
                             {hist}
                         </Text>
                         <Text style={{fontWeight: 'bold', alignSelf:'flex-end', paddingRight: '30px'}}>

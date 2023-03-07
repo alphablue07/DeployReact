@@ -2,6 +2,7 @@
 import { ref, push, onValue } from "firebase/database";
 import { database } from "../config/firebase";
 import { checkDataLogin } from "./autentication";
+import data from "./data/data.json"
 
 
 
@@ -211,13 +212,21 @@ export const getLeaderBoard = async (limit = 0) => {
     data_score.forEach(async element => {
         const found = players.some(el => el.id_player === element.data.id_player);
         if (!found) {
-            let name = "< Unknown >"
+
+            const dataName = data
+
+            // console.log('data length name : ', dataName.data.length)
+
+
+            let firstName = Math.floor(Math.random()*dataName.data.length);
+            let lastName = Math.floor(Math.random()*dataName.data.length);
+            let name = `${dataName.data[firstName]} ${dataName.data[lastName]}`
             let image = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
             const py_index = py.findIndex(function (c) {
                 return c.data.id_player === element.data.id_player
             })
             if (py_index >= 0) {
-                name = py[py_index].data.name
+                name = py[py_index].data.username
                 if (py[py_index].data.profile_picture) {
                     image = py[py_index].data.profile_picture;
                 }
