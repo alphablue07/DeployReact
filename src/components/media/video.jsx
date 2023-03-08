@@ -1,8 +1,20 @@
 import React, {useEffect, useState} from "react"
 import { ref, set, child, get } from "firebase/database"
+import { getAuth, onAuthStateChanged, } from "firebase/auth";
 import { database } from "../../config/firebase";
 import { useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
+
+const auth = getAuth();
+
+export function useAuth(){
+    const [currentUser, setCurrentUser] = useState();
+    useEffect(() => {
+        const unsub = onAuthStateChanged(auth, user => setCurrentUser(user));
+        return unsub;
+      }, [])
+      return currentUser
+    }
 
 export default function VideoUploader() {
     const [isVideo, setVideo] = useState("")
@@ -10,11 +22,12 @@ export default function VideoUploader() {
     const [isUserId, setUserId] = useState("")
     const [isLoading, setLoading] = useState(false)
     
+
     const navigate = useNavigate()
     const authenticate = async () => {
         let storage = localStorage.getItem("accesstoken")
         if (storage === "" || storage === null){
-          navigate("/")
+          navigate("/profiles")
         } else {
           let decode = jwtDecode(storage)
           const db = await get(child(ref(database),`${decode.user_id}/UserProfile/vidProfile`))

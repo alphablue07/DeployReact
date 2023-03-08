@@ -15,7 +15,7 @@ import { halamanGameVerifikasi } from "../../action/games";
 import { getLeaderBoard } from "../../action/games";
 // import { useAuth,upload } from "../../config/firebase";
 import { useAuth,upload } from "../../action/fb_storage";
-// import { VideoUploader } from "../../components"
+import { VideoUploader } from "../../components"
 
 const Profiles = (props) => {
       halamanGameVerifikasi();
@@ -177,10 +177,10 @@ const Profiles = (props) => {
               </div>
             </div>
           </Container>
-{/* 
+
           <Container>
             <VideoUploader/>
-          </Container> */}
+          </Container>
 
         </div>
       );
