@@ -22,7 +22,9 @@ export default function VideoUploader() {
     const [isUserId, setUserId] = useState("")
     const [isLoading, setLoading] = useState(false)
     
-
+    const getUid = async()=>{
+        return await localStorage.getItem("UID");
+    }
 
     const authenticate = async () => {
         let storage = localStorage.getItem("accesstoken")
@@ -39,14 +41,16 @@ export default function VideoUploader() {
 
     const dataTable = async () => {
         try {
-            const db = await get(child(ref(database),`${isUser}/UserProfile/vidProfile`))
+            let uuid_player = await getUid()
+            // const db = await get(child(ref(database),`${isUser}/UserProfile/vidProfile`))
+            const db = await get(child(ref(database),`/UserProfile/${uuid_player}/vidProfile`))
             const video = db?.val()
             setVideo(video?.vidUrl)
         } catch (error) {
             console.log(error);
         }
     }
-    const submitVideo = (e) => {
+    const submitVideo = async (e) => {
         setLoading(true)
         const video = e.target.files[0]
         const data = new FormData()
@@ -54,13 +58,18 @@ export default function VideoUploader() {
         data.append("upload_preset", "highlightVid")
         data.append("cloud_name", "dd5oonydb")
 
+        let uuid_player = await getUid()
+
+        // console.log('isUserId ==============>>>>>>>>>>',uuid)
+
         fetch("https://api.cloudinary.com/v1_1/dd5oonydb/video/upload", {
             method: "post",
             body: data
         })
             .then((res) => res.json())
             .then((data) => {
-                set(ref(database,`${isUserId}/UserProfile/vidProfile`), { vidUrl : data.url })
+                // set(ref(database,`${isUserId}/UserProfile/vidProfile`), { vidUrl : data.url })
+                set(ref(database,`/UserProfile/${uuid_player}/vidProfile`), { vidUrl : data.url })
                 setLoading(false)
             }).catch((err) => {
                 console.log(err);
