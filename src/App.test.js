@@ -6,6 +6,8 @@ import Register from './pages/register/register';
 import Login from './components/login/login';
 import GameRPS from './pages/games/rock_paper_scissors';
 
+
+//pages test
 describe("test all pages render", () => { 
   test("renders Home pages", done => {
     render(
@@ -46,6 +48,18 @@ describe("test all pages render", () => {
       </Router>
     )
     done()
+  })
+})
+
+// test component
+describe("renders leaderboard list", () => { 
+  test("validate the list on players in leaderboard", () => {
+    const component = render(
+    <Router>
+    <Home/>
+    </Router>);
+    const linkElement = component.getByText(/FIND YOUR FAVORITE GAME/i)
+    expect(linkElement).toBeInTheDocument();
   })
 })
 

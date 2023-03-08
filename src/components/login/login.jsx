@@ -47,6 +47,7 @@ class Login extends Component {
       });
   }
 
+
   handleOnChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value
@@ -80,6 +81,7 @@ class Login extends Component {
                         id="email"
                         onChange={this.handleOnChange} />
                     </Form.Group>
+
                     <Form.Group className="mb-3">
                       <Form.Control
                         type="password"

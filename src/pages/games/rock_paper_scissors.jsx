@@ -1,4 +1,9 @@
-import { Component, useState, useEffect } from "react";
+/* eslint-disable eqeqeq */
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-extra-bind */
+import { useEffect } from "react";
 import Navbar from "../../components/layout/nav/Navbar";
 import img_hand_batu from "../../assets/images/games/rock-paper-scissors/hand_batu.png"
 import img_hand_kertas from "../../assets/images/games/rock-paper-scissors/hand_kertas.png"
@@ -6,7 +11,7 @@ import img_hand_gunting from "../../assets/images/games/rock-paper-scissors/hand
 import img_icon_refresh from "../../assets/images/games/rock-paper-scissors/icon_refresh.png"
 import "../../assets/pages/games/rock_paper_scissors/style.css"
 import { halamanGameVerifikasi, insertGameScore } from "../../action/games";
-import { checkDataLogin } from "../../action/autentication";
+
 
 const GameRPS = () => {
     // const [gameRound, setGameRound] = useState(1);

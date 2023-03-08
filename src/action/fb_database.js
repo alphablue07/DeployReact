@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable array-callback-return */
 
 import { set, ref, push, onValue, update } from "firebase/database";
@@ -168,8 +169,6 @@ export const updateProfileImg = (currentUser, profile_picture) => {
   };
   update(dbRef, data);
 };
-
-//update 
 
 //get game info
 export const getGameInfoById = (id) => {

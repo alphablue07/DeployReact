@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-restricted-globals */
 import React, { useState, useEffect} from "react";
 import Navbar from "../../components/layout/nav/Navbar";

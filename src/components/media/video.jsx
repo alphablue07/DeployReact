@@ -1,3 +1,4 @@
+
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from "react"
 import { ref, set, child, get } from "firebase/database"
@@ -18,8 +19,8 @@ export function useAuth(){
 
 export default function VideoUploader() {
     const [isVideo, setVideo] = useState("")
-    const [isUser, setUser] = useState("")
-    const [isUserId, setUserId] = useState("")
+    // const [isUser, setUser] = useState("")
+    // const [isUserId, setUserId] = useState("")
     const [isLoading, setLoading] = useState(false)
     
     const getUid = async()=>{
@@ -33,8 +34,8 @@ export default function VideoUploader() {
         } else {
           let decode = jwtDecode(storage)
           const db = await get(child(ref(database),`${decode.user_id}/UserProfile/vidProfile`))
-          setUser(decode.email)
-          setUserId(decode.user_id)
+        //   setUser(decode.email)
+        //   setUserId(decode.user_id)
           setVideo(db.val()?.vidUrl)
         }
       }
