@@ -274,8 +274,7 @@ const GameRPS = () => {
                             </div>
                         </div>
                     </div>
-
-
+                    <a type="submit" target="_blank" href="/game/rps/history" className="btn btn-primary" style={{position:'absolute', bottom:'10px', right: '10px'}}>Get History</a>
                 </div>
             </div>
         </div >
