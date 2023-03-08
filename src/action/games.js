@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable no-unused-vars */
 /* eslint-disable array-callback-return */
 import { ref, push, onValue } from "firebase/database";
