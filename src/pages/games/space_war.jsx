@@ -20,7 +20,7 @@ const GameSpaceWar = () => {
 
   // sendMessage("JavascriptHook", "ChangeData", "HarlanSR");
 
-    const handleGameOver = useCallback(( score ) => {
+    const handleGameOver = useCallback(( username, score ) => {
         insertGameScore(game_id, uuid, score);
     }, [uuid]);
 
