@@ -42,6 +42,8 @@ class Register extends Component {
         );
         sendEmailVerification(res.user)
           .then(() => {
+            localStorage.setItem('jwt-token', res.user.accessToken)
+            localStorage.setItem('UID', res.user.uid)
             alert("Mohon verifikasi email anda");
             window.location.href = "/";
           })

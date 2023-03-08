@@ -161,13 +161,16 @@ export const updateScore = (id, total_score) => {
 };
 
 //update profile photo
-export const updateProfileImg = (id, profile_picture) => {
-  const dbRef = ref(db, `game_user/${id}`);
+export const updateProfileImg = (currentUser, profile_picture) => {
+  const dbRef = ref(db, `game_user/${currentUser.uid}`);
   const data = {
     profile_picture,
   };
   update(dbRef, data);
 };
+
+//update 
+
 //get game info
 export const getGameInfoById = (id) => {
   return new Promise((resolve, reject) => {

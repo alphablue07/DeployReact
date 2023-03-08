@@ -43,10 +43,9 @@ const GameRPS = () => {
         text_vs.style.display = "block";
 
         if(gameRound>maxRound){
-            insertGameScore(game_id, uuid, gameScore);
+            // insertGameScore(game_id, uuid, gameScore);
             gameRound = 1
             gameScore = 0
-
         }
         text_round.innerHTML = gameRound
         text_score.innerHTML = gameScore
@@ -57,7 +56,7 @@ const GameRPS = () => {
 
     function card_hand(handChose, who) {
         for (let i = 1; i <= 3; i++) {
-            console.log("WHO", who, hand)
+            // console.log("WHO", who, hand)
             hand[who][i].style.backgroundColor = color_unchose;
         }
 
@@ -123,6 +122,7 @@ const GameRPS = () => {
             }.bind(this), 1000)
         }else{
             btn_reset.style.display = 'block'
+            insertGameScore(game_id, uuid, gameScore);
         }
         
     }
