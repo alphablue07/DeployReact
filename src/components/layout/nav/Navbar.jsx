@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 // import { authFirebase } from "../../../config/firebase";
 import { checkDataLogin, firebaseLogout } from "../../../action/autentication";
 // import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ bgColor, transparant = false }) => {
   const [showModal, setShowModal] = useState(false);
@@ -21,6 +22,7 @@ const Navbar = ({ bgColor, transparant = false }) => {
     setShowModal((previousValue) => !previousValue);
   };
 
+  // const navigate = useNavigate()
   const handleLogout = () => {
     // dispatch({
     //   type: "LOGOUT",
