@@ -36,7 +36,6 @@ export async function deletePhoto(currentUser){
 export async function upload(file,currentUser){
 
       const fileRef = ref(storage, currentUser.uid + '.png');
-      // eslint-disable-next-line no-unused-vars
       const snapshot = await uploadBytes(fileRef,file);
       const photoURL = await getDownloadURL(fileRef);
       updateProfileImg(currentUser,photoURL)

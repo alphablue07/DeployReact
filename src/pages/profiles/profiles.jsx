@@ -179,9 +179,9 @@ const Profiles = (props) => {
             </div>
           </Container>
 
-          <Container>
+          {/* <Container>
             <VideoUploader/>
-          </Container>
+          </Container> */}
 
         </div>
       );

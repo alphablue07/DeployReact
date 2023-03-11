@@ -84,7 +84,7 @@ export default function VideoUploader() {
         <>
             <div className="container">
                 <div className="d-flex justify-content-center">
-                    <h2>Video Upload</h2>
+                    <h2>Got a highlight of your game? Upload it to your profile!</h2>
                 </div>
                 <div className="container input-group d-flex justify-content-center">
                     <form className="mb-2">
