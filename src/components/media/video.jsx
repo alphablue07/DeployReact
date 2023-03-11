@@ -83,11 +83,12 @@ export default function VideoUploader() {
     return (
         <>
             <div className="container">
-                <div className="d-flex justify-content-center">
+            
+                <div className=" d-flex offset-1 text-center justify-content-center">
                     <h2>Got a highlight of your game? Upload it to your profile!</h2>
                 </div>
-                <div className="container input-group d-flex justify-content-center">
-                    <form className="mb-2">
+                <div className="container input-group d-flex justify-content-center align-items-center">
+                    <form>
                         <input 
                             type="file"
                             className="form-control" 
@@ -98,9 +99,7 @@ export default function VideoUploader() {
                             <p>waiting for uploading</p>:
                             <p>upload your highlights!</p>
                             }
-                        </div>
-                    </form>
-                    {isVideo &&
+                            {isVideo &&
                      <video
                         width={360}
                         height={330}
@@ -110,6 +109,9 @@ export default function VideoUploader() {
                              <source src={isVideo} type="video/mp4"/>
                     </video>
                     }
+                        </div>
+                    </form>
+                    
                 </div>
             </div>
         </>

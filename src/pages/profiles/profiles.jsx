@@ -121,16 +121,15 @@ const Profiles = (props) => {
               <div className="col-3">
               <Card className="bg-dark" style={{ width: '100%' }}>
                 <Card.Header style={{backgroundImage: `url(${photoURL})`, width: "100%", height: "200px", backgroundRepeat: "no-repeat", backgroundSize: "cover"}}/>
-                <Card.Header id='preview' style={{backgroundImage: `url(${imageSrc})`, width: "100%", height: "200px", backgroundRepeat: "no-repeat", backgroundSize: "cover", textAlign:'center', lineHeight:'200px', fontWeight:'bold'}}> Image Preview Shown Here </Card.Header>
-                <Card.Body style={{position: "relative"}}>
-                <div style={{position: "absolute", top:"1px", left:"0" , right:"0", backgroundColor:"rgba(255,255,255,0.8)"}}>
-                  <Form.Control onChange={handleOnChange} type="file" size="sm" />
-                </div>
-                </Card.Body>
-              </Card>
-              <Button className="mt-1" type="submit" href="/profiles" onClick={handleClick}>Save Changes</Button>     
+              </Card>    
+              
+                <Card className="text-dark mt-4 col-6 offset-3 bg-warning">
+                  <Card.Header as="h5" className="text-center text-dark">Game Score</Card.Header>
+                  <Card.Text className="text-center">{dataUser}</Card.Text>
+                </Card>
+              
               </div>
-              <div className="col-lg-5 offset-1">
+              <div className="col-lg-5 offset-0">
                   <Form.Group className="mb-3" controlId="name">
                     <Form.Label>full name</Form.Label>
                     <Form.Control
@@ -169,19 +168,17 @@ const Profiles = (props) => {
                   </Form.Group>
                   <Button href="profiles/update" className="btn btn-primary me-3">Here, Update Your Profile Data !
                   </Button>
+                  
               </div>
-              <div className="col-lg-2 offset-1">
-                <Card className="text-dark">
-                  <Card.Header as="h5" className="text-center text-dark">Game Score</Card.Header>
-                  <Card.Text className="text-center">{dataUser}</Card.Text>
-                </Card>
+              <div className="col-lg-3 offset-0">
+                  <VideoUploader/>
               </div>
+
             </div>
           </Container>
 
-          {/* <Container>
-            <VideoUploader/>
-          </Container> */}
+          <Container>
+          </Container>
 
         </div>
       );
