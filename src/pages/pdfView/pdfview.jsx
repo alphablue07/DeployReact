@@ -1,4 +1,4 @@
-// import dynamic from "next/dynamic";
+
 import { lazy, Suspense } from "react";
 import { useEffect, useState } from "react"
 

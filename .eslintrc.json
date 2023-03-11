@@ -1,0 +1,43 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended"
+    ],
+    "overrides": [
+    ],
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 8,
+        "requireConfigFile": false,
+        "babelOptions": {
+            "presets": ["@babel/preset-react"]
+         },
+
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "react/no-did-mount-set-state": "off",
+        "react/jsx-uses-react": "off",
+        "react/jsx-uses-vars": "error",
+        "no-console": "off",
+        "camelcase": "off",
+        "curly": "error",
+        "no-unused-vars": "off",
+        "quotes": ["off", "double"],
+        "eqeqeq": "off",
+        "react/react-in-jsx-scope": "off",
+        "react-hooks/exhaustive-deps": "off",
+        "no-empty": "off",
+        "jsx-a11y/alt-text": "off",
+        "jsx-a11y/anchor-is-valid": "off",
+        "no-undef": "off"
+    }}

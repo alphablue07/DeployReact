@@ -1,7 +1,5 @@
-/* eslint-disable eqeqeq */
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable react-hooks/exhaustive-deps */
+
+
 /* eslint-disable no-extra-bind */
 import { useEffect } from "react";
 import Navbar from "../../components/layout/nav/Navbar";
@@ -17,14 +15,14 @@ const GameRPS = () => {
     // const [gameRound, setGameRound] = useState(1);
     // const [gameScore, setGameScore] = useState(0);
     const game_id = "-NG-Fxccy-8f1RZoup6D"
-    const uuid = localStorage.getItem('UID');
+    const uuid = localStorage.getItem("UID");
 
     let gameRound = 1;
     let gameScore = 0;
     let maxRound = 5;
 
-    let color_chose = '#C4C4C4';
-    let color_unchose = '#00000000';
+    let color_chose = "#C4C4C4";
+    let color_unchose = "#00000000";
     let have_result = false;
 
     let text_vs = null;
@@ -56,7 +54,7 @@ const GameRPS = () => {
         text_score.innerHTML = gameScore
 
         
-        btn_reset.style.display = 'none'
+        btn_reset.style.display = "none"
     }
 
     function card_hand(handChose, who) {
@@ -76,7 +74,7 @@ const GameRPS = () => {
     }
 
     function press(you_chose) {
-        console.log('Button has been pressed');
+        console.log("Button has been pressed");
         if (have_result) { return; }
 
         have_result = true;

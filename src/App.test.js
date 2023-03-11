@@ -1,4 +1,5 @@
-import { render } from '@testing-library/react';
+/* eslint-disable no-undef */
+import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Home from "./pages/home"
 import Profiles from './pages/profiles/profiles';
@@ -52,8 +53,8 @@ describe("test all pages render", () => {
 })
 
 // test component
-describe("renders leaderboard list", () => { 
-  test("validate the list on players in leaderboard", () => {
+describe("renders Text", () => { 
+  test("validate text in homepage", () => {
     const component = render(
     <Router>
     <Home/>
@@ -61,6 +62,34 @@ describe("renders leaderboard list", () => {
     const linkElement = component.getByText(/FIND YOUR FAVORITE GAME/i)
     expect(linkElement).toBeInTheDocument();
   })
+})
+describe("invalid text", () => { 
+  test("The text is invalid", () => {
+    const component = render(
+    <Router>
+    <Home/>
+    </Router>);
+    expect(() => getByText(/definitely not in the document/i)).toThrow()
+  })
+})
+describe("invalid button", () => { 
+  test("The button is invalid", () => {
+    const component = render(
+    <Router>
+    <Home/>
+    </Router>);
+    const submitButton = screen.queryByText('submit')
+    expect(submitButton).toBeNull() // it doesn't exist
+  })
+})
+describe("invalid Roles", () => { 
+  test("The roles are invalid", () => {
+    const component = render(
+    <Router>
+    <Home/>
+    </Router>);
+    expect(() =>screen.getByText('llo Worl', {exact: false}) // it doesn't exist
+  )})
 })
 
 
