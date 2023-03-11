@@ -1,5 +1,3 @@
-
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from "react"
 import { ref, set, child, get } from "firebase/database"
 import { getAuth, onAuthStateChanged, } from "firebase/auth";
@@ -80,7 +78,6 @@ export default function VideoUploader() {
     useEffect(()=>{
         authenticate()
         dataTable()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[dataTable])
     
     return (
